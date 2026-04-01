@@ -42,7 +42,7 @@ AFRAME.registerComponent('show-model', {
 
 <body>
 
-<a-scene background="color: #f2f2f2">
+<a-scene background="color: #0D0D0D">
 
   <!-- CAMERA -->
   <a-entity position="0 0 3" wasd-controls>
@@ -52,25 +52,36 @@ AFRAME.registerComponent('show-model', {
   </a-entity>
 
   <!-- LIGHT -->
-  <a-light type="ambient" intensity="0.8"></a-light>
-  <a-light type="directional" position="0 5 5"></a-light>
+  <a-light type="ambient" intensity="0.6"></a-light>
+  <a-light type="directional" position="0 5 5" intensity="1"></a-light>
 
-  <!-- FLOOR -->
+  <!-- FLOOR (Rubber Gym Style) -->
   <a-plane position="0 -1 0" rotation="-90 0 0"
-           width="12" height="12" color="#9CAF88"></a-plane>
+           width="12" height="12" color="#121212"></a-plane>
 
-  <!-- WALLS -->
-  <a-plane position="0 2 -6" width="12" height="5" color="#FFA4A4"></a-plane>
+  <!-- WALLS (Gym Dark Theme) -->
+  <!-- Back Wall -->
+  <a-plane position="0 2 -6"
+           width="12" height="5"
+           color="#1E1E1E"></a-plane>
 
-  <a-plane position="-6 2 0" rotation="0 90 0"
-           width="12" height="5" color="#FFBDBD"></a-plane>
+  <!-- Left Wall -->
+  <a-plane position="-6 2 0"
+           rotation="0 90 0"
+           width="12" height="5"
+           color="#2C2C2C"></a-plane>
 
-  <a-plane position="6 2 0" rotation="0 -90 0"
-           width="12" height="5" color="#FFBDBD"></a-plane>
+  <!-- Right Wall -->
+  <a-plane position="6 2 0"
+           rotation="0 -90 0"
+           width="12" height="5"
+           color="#2C2C2C"></a-plane>
 
   <!-- CEILING -->
-  <a-plane position="0 5 0" rotation="90 0 0"
-           width="12" height="12" color="#FFF5F5"></a-plane>
+  <a-plane position="0 5 0"
+           rotation="90 0 0"
+           width="12" height="12"
+           color="#1A1A1A"></a-plane>
 
   <!-- TEXT -->
   <a-text id="infoText"
@@ -78,7 +89,7 @@ AFRAME.registerComponent('show-model', {
           position="0 4 -5.8"
           align="center"
           width="10"
-          color="#8A3324">
+          color="#FFD700">
   </a-text>
 
   <!-- ================= MODELS ================= -->
@@ -138,7 +149,7 @@ AFRAME.registerComponent('show-model', {
            show-model="message: Treadmill Workout; model: #treadmill3D">
   </a-plane>
 
-  <!-- Side Walls -->
+  <!-- Side Wall -->
   <a-plane class="clickable"
            src="images/punch_bag.png"
            position="-5.8 1.6 0"
