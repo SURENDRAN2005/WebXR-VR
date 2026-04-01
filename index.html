@@ -39,48 +39,65 @@ AFRAME.registerComponent('show-model', {
 
 <body>
 
-<a-scene background="color: #EDEDED">
+<a-scene background="color: #0B0F1A">
 
   <!-- CAMERA -->
   <a-entity position="0 0 3" wasd-controls>
     <a-entity camera look-controls position="0 1.6 0">
-      <a-cursor raycaster="objects: .clickable"></a-cursor>
+      <a-cursor raycaster="objects: .clickable" color="#00FFFF"></a-cursor>
     </a-entity>
   </a-entity>
 
-  <!-- LIGHTING (Soft Ambient Professional) -->
-  <a-light type="ambient" intensity="0.9" color="#ffffff"></a-light>
-  <a-light type="directional" position="2 5 3" intensity="0.8"></a-light>
-  <a-light type="point" position="-2 4 -2" intensity="0.5" color="#f0f0f0"></a-light>
+  <!-- LIGHTING (Neon Glow Style) -->
+  <a-light type="ambient" intensity="0.5" color="#8899ff"></a-light>
+  <a-light type="point" position="0 4 -3" intensity="1" color="#00ffff"></a-light>
+  <a-light type="point" position="-3 3 2" intensity="0.8" color="#ff00ff"></a-light>
+  <a-light type="point" position="3 3 2" intensity="0.8" color="#00ffcc"></a-light>
 
-  <!-- FLOOR (Soft Rubber Grey) -->
+  <!-- FLOOR -->
   <a-plane position="0 -1 0" rotation="-90 0 0"
-           width="12" height="12" color="#D6D6D6"></a-plane>
+           width="12" height="12"
+           color="#111827"
+           material="metalness:0.3; roughness:0.4">
+  </a-plane>
 
-  <!-- WALLS (Ambient Professional Tones) -->
-  
-  <!-- Back Wall -->
+  <!-- WALLS -->
   <a-plane position="0 2 -6"
            width="12" height="5"
-           color="#CFCFCF"></a-plane>
+           color="#141B2D"
+           material="emissive:#220033; emissiveIntensity:0.2">
+  </a-plane>
 
-  <!-- Left Wall -->
   <a-plane position="-6 2 0"
            rotation="0 90 0"
            width="12" height="5"
-           color="#E3E3E3"></a-plane>
+           color="#101728"
+           material="emissive:#002244; emissiveIntensity:0.2">
+  </a-plane>
 
-  <!-- Right Wall -->
   <a-plane position="6 2 0"
            rotation="0 -90 0"
            width="12" height="5"
-           color="#E3E3E3"></a-plane>
+           color="#101728"
+           material="emissive:#002244; emissiveIntensity:0.2">
+  </a-plane>
 
   <!-- CEILING -->
   <a-plane position="0 5 0"
            rotation="90 0 0"
            width="12" height="12"
-           color="#F5F5F5"></a-plane>
+           color="#0f172a">
+  </a-plane>
+
+  <!-- NEON STRIPS -->
+  <a-box position="0 4.9 -6" width="12" height="0.05" depth="0.2"
+         material="emissive:#00ffff; emissiveIntensity:2"></a-box>
+
+  <a-box position="-6 4.9 0" width="0.2" height="0.05" depth="12"
+         material="emissive:#ff00ff; emissiveIntensity:2"></a-box>
+
+  <a-box position="6 4.9 0" width="0.2" height="0.05" depth="12"
+         material="emissive:#00ffcc; emissiveIntensity:2"></a-box>
 
   <!-- TEXT -->
   <a-text id="infoText"
@@ -88,7 +105,8 @@ AFRAME.registerComponent('show-model', {
           position="0 4 -5.8"
           align="center"
           width="10"
-          color="#333333">
+          color="#00FFFF"
+          material="emissive:#00ffff; emissiveIntensity:1.5">
   </a-text>
 
   <!-- ================= MODELS ================= -->
@@ -126,11 +144,11 @@ AFRAME.registerComponent('show-model', {
 
   <!-- ================= POSTERS ================= -->
 
-  <!-- Back Wall -->
   <a-plane class="clickable"
            src="images/dumbbell.png"
            position="-3 1.6 -5.9"
            width="2" height="2"
+           material="emissive:#00ffff; emissiveIntensity:0.3"
            show-model="message: Dumbbell Exercise; model: #dumbbell3D">
   </a-plane>
 
@@ -138,6 +156,7 @@ AFRAME.registerComponent('show-model', {
            src="images/kettlebell.png"
            position="0 1.6 -5.9"
            width="2" height="2"
+           material="emissive:#ff00ff; emissiveIntensity:0.3"
            show-model="message: Kettlebell Training; model: #kettlebell3D">
   </a-plane>
 
@@ -145,15 +164,16 @@ AFRAME.registerComponent('show-model', {
            src="images/treadmill.png"
            position="3 1.6 -5.9"
            width="2" height="2"
+           material="emissive:#00ffcc; emissiveIntensity:0.3"
            show-model="message: Treadmill Workout; model: #treadmill3D">
   </a-plane>
 
-  <!-- Side Wall -->
   <a-plane class="clickable"
            src="images/punch_bag.png"
            position="-5.8 1.6 0"
            rotation="0 90 0"
            width="2" height="2"
+           material="emissive:#ffaa00; emissiveIntensity:0.3"
            show-model="message: Punch Bag Training; model: #punch3D">
   </a-plane>
 
