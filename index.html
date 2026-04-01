@@ -20,15 +20,12 @@ AFRAME.registerComponent('show-model', {
   init: function () {
     this.el.addEventListener('click', () => {
 
-      // Update text
       document.querySelector('#infoText')
         .setAttribute('value', this.data.message);
 
-      // Hide all models
       document.querySelectorAll('.fitness-model')
         .forEach(m => m.setAttribute('visible', false));
 
-      // Show selected model
       if (this.data.model) {
         this.data.model.setAttribute('visible', true);
       }
@@ -42,7 +39,7 @@ AFRAME.registerComponent('show-model', {
 
 <body>
 
-<a-scene background="color: #0D0D0D">
+<a-scene background="color: #EDEDED">
 
   <!-- CAMERA -->
   <a-entity position="0 0 3" wasd-controls>
@@ -51,37 +48,39 @@ AFRAME.registerComponent('show-model', {
     </a-entity>
   </a-entity>
 
-  <!-- LIGHT -->
-  <a-light type="ambient" intensity="0.6"></a-light>
-  <a-light type="directional" position="0 5 5" intensity="1"></a-light>
+  <!-- LIGHTING (Soft Ambient Professional) -->
+  <a-light type="ambient" intensity="0.9" color="#ffffff"></a-light>
+  <a-light type="directional" position="2 5 3" intensity="0.8"></a-light>
+  <a-light type="point" position="-2 4 -2" intensity="0.5" color="#f0f0f0"></a-light>
 
-  <!-- FLOOR (Rubber Gym Style) -->
+  <!-- FLOOR (Soft Rubber Grey) -->
   <a-plane position="0 -1 0" rotation="-90 0 0"
-           width="12" height="12" color="#121212"></a-plane>
+           width="12" height="12" color="#D6D6D6"></a-plane>
 
-  <!-- WALLS (Gym Dark Theme) -->
+  <!-- WALLS (Ambient Professional Tones) -->
+  
   <!-- Back Wall -->
   <a-plane position="0 2 -6"
            width="12" height="5"
-           color="#1E1E1E"></a-plane>
+           color="#CFCFCF"></a-plane>
 
   <!-- Left Wall -->
   <a-plane position="-6 2 0"
            rotation="0 90 0"
            width="12" height="5"
-           color="#2C2C2C"></a-plane>
+           color="#E3E3E3"></a-plane>
 
   <!-- Right Wall -->
   <a-plane position="6 2 0"
            rotation="0 -90 0"
            width="12" height="5"
-           color="#2C2C2C"></a-plane>
+           color="#E3E3E3"></a-plane>
 
   <!-- CEILING -->
   <a-plane position="0 5 0"
            rotation="90 0 0"
            width="12" height="12"
-           color="#1A1A1A"></a-plane>
+           color="#F5F5F5"></a-plane>
 
   <!-- TEXT -->
   <a-text id="infoText"
@@ -89,7 +88,7 @@ AFRAME.registerComponent('show-model', {
           position="0 4 -5.8"
           align="center"
           width="10"
-          color="#FFD700">
+          color="#333333">
   </a-text>
 
   <!-- ================= MODELS ================= -->
